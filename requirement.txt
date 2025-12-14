@@ -1,9 +1,5 @@
 streamlit
-tensorflow
-keras
-opencv-python
+tensorflow==2.15.0
 numpy
-pandas
-matplotlib
-Pillow
-scikit-learn
+pillow
+opencv-python-headless
