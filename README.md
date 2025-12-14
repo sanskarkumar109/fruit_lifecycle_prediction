@@ -1,84 +1,141 @@
-# 🍎 Fruit Lifecycle Prediction using AI/ML
+🍎 Fruit Lifecycle Prediction using AI/ML
 
-This project predicts **how many days a fruit will take to get spoiled (waste)** based on its image.  
-It uses a **deep learning regression model** trained on fruit images with lifecycle labels, and provides a **Streamlit frontend** where users can either:
+This project predicts how many days a fruit will take to get spoiled (waste) based on its image.
+It uses a deep learning regression model trained on fruit images with lifecycle labels and provides a Streamlit frontend where users can either:
 
-- 📂 Upload an image of a fruit  
-- 📸 Capture a live photo using their webcam  
+📂 Upload an image of a fruit
 
-The model then predicts the **remaining shelf-life in days**.
+📸 Capture a live photo using their webcam
 
----
+The model then predicts the remaining shelf-life in days.
 
-## 🚀 Features
-- Trains a deep learning model on fruit lifecycle dataset.  
-- Supports **image upload** and **camera input** in Streamlit.  
-- Predicts fruit freshness in **number of days left before waste**.  
-- User-friendly **web interface** built with Streamlit.  
+🚀 Features
 
----
+Deep learning–based fruit freshness prediction
 
-## 📂 Project Structure
+Regression approach instead of simple classification
+
+Supports image upload and camera input
+
+Clean and interactive Streamlit web interface
+
+CPU-friendly (no GPU required)
+
+📂 Project Structure
 fruit_lifecycle/
-│── app.py # Streamlit frontend
-│── models.py # Model training & saving
-│── predict.py # Helper functions for inference
-│── requirements.txt # Dependencies
-│── README.md # Project documentation
-│── dataset/ # Dataset folder
-│ ├── train/ # Training images
-│ └── test/ # Testing images
-│── saved_model/ # Trained model will be saved here
+│── app.py                 # Streamlit frontend
+│── train_fruit_freshness.py # Model training script
+│── predict.py             # Helper functions for inference
+│── fruit_freshness.keras  # Trained model (generated locally)
+│── requirements.txt       # Project dependencies
+│── README.md              # Project documentation
 
-## 🛠️ Installation & Setup
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/your-username/fruit-lifecycle-prediction.git
-cd fruit-lifecycle-prediction
-2. Create a virtual environment (recommended)
-python -m venv venv
-venv\Scripts\activate   # On Windows
-source venv/bin/activate # On Mac/Linux
-3. Install dependencies
+⚠️ Note:
+The dataset and virtual environment (venv/) are intentionally excluded from the repository, following best software engineering practices.
+
+📊 Dataset
+
+This project uses a fruit freshness dataset containing images of fresh and rotten fruits.
+
+🔗 Kaggle Dataset Link:
+👉 https://www.kaggle.com/datasets/sriramr/fruits-fresh-and-rotten-for-classification
+
+Dataset Description
+
+Categories: Apples, Bananas, Oranges
+
+Labels: Fresh / Rotten
+
+Images are used to derive fruit lifecycle (days-to-waste) labels for regression
+
+You must download the dataset manually from Kaggle and organize it locally as required by the training script.
+
+🛠️ Installation & Setup
+1️⃣ Clone the repository
+git clone https://github.com/sanskarkumar109/fruit_lifecycle_prediction.git
+cd fruit_lifecycle_prediction
+
+2️⃣ Create a virtual environment (recommended)
+py -3.10 -m venv venv
+venv\Scripts\activate   # Windows
+
+3️⃣ Install dependencies
 pip install -r requirements.txt
-4. Run training (optional if you want to retrain)
-python models.py
-5. Start the Streamlit app
-streamlit run app.py
+
+4️⃣ (Optional) Train the model
+
+If you want to retrain the model using the dataset:
+
+python train_fruit_freshness.py
+
+
+This will generate:
+
+fruit_freshness.keras
+
+5️⃣ Run the Streamlit app
+python -m streamlit run app.py
+
+
+Open your browser at:
+
+http://localhost:8501
+
 🎯 Usage
-Open the Streamlit app (usually at http://localhost:8501).
 
-Choose either:
+Open the Streamlit web app
 
-Upload a fruit image, or
+Choose one option:
 
-Capture a live image with your webcam.
+Upload a fruit image 📂
 
-Click Predict.
+Capture an image using webcam 📸
 
-The app will display the predicted days left before the fruit becomes waste.
+The app displays:
 
-📊 Model Details
-Architecture: Transfer Learning with ResNet50 (pretrained on ImageNet).
+Estimated shelf life (days remaining)
 
-Task: Regression (predicting days-to-waste).
+🧠 Model Details
 
-Loss Function: Mean Squared Error (MSE).
+Architecture: MobileNetV2 (ImageNet pretrained)
 
-Optimizer: Adam.
+Learning Type: Transfer Learning
+
+Task: Regression (predicting days-to-waste)
+
+Loss Function: Huber Loss
+
+Optimizer: Adam
+
+Output: Continuous value (0–5 days)
 
 ✅ Example
-Input: Image of a fresh apple 🍏
 
-Output: Predicted: 5.3 days before waste
+Input: Image of a fresh apple 🍏
+Output:
+
+Estimated Shelf Life: 4.8 days
 
 📌 Future Improvements
-Add support for more fruit categories.
 
-Improve accuracy with advanced architectures (EfficientNet, Vision Transformers).
+Add more fruit categories
 
-Deploy the app on Streamlit Cloud / Hugging Face Spaces.
+Multi-stage freshness levels (Fresh / Mid / Rotten)
+
+Grad-CAM visualization
+
+Cloud deployment (Streamlit Cloud / Hugging Face Spaces)
+
+Mobile app integration
 
 🤝 Contributing
-Pull requests are welcome! For major changes, please open an issue first to discuss.
+
+Pull requests are welcome!
+For major changes, please open an issue to discuss improvements.
+
+👤 Author
+
+Sanskar Kumar
+MCA – VIT Chennai
+AI & Computer Vision Enthusiast
