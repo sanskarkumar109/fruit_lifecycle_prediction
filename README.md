@@ -1,7 +1,7 @@
 🍎 Fruit Lifecycle Prediction using AI/ML
 
-This project predicts how many days a fruit will take to get spoiled (waste) based on its image.
-It uses a deep learning regression model trained on fruit images with lifecycle labels and provides a Streamlit frontend where users can either:
+  This project predicts how many days a fruit will take to get spoiled (waste) based on its image.
+  It uses a deep learning regression model trained on fruit images with lifecycle labels and provides a Streamlit frontend where users can either:
 
 📂 Upload an image of a fruit
 
@@ -23,33 +23,52 @@ CPU-friendly (no GPU required)
 
 📂 Project Structure
 fruit_lifecycle/
-│── app.py                 # Streamlit frontend
+│── app.py                  # Streamlit frontend
 │── train_fruit_freshness.py # Model training script
-│── predict.py             # Helper functions for inference
-│── fruit_freshness.keras  # Trained model (generated locally)
-│── requirements.txt       # Project dependencies
-│── README.md              # Project documentation
+│── predict.py              # Helper functions for inference
+│── fruit_freshness.keras   # Trained model (generated locally)
+│── requirements.txt        # Project dependencies
+│── README.md               # Project documentation
+│── dataset/                # Fruit freshness dataset
+│   ├── train/
+│   └── test/
 
+📊 Dataset (Included in Repository)
 
-⚠️ Note:
-The dataset and virtual environment (venv/) are intentionally excluded from the repository, following best software engineering practices.
+The dataset used for this project is already included in the repository under the dataset/ directory.
 
-📊 Dataset
+Dataset Source
 
-This project uses a fruit freshness dataset containing images of fresh and rotten fruits.
+The dataset was originally sourced from Kaggle:
 
 🔗 Kaggle Dataset Link:
 👉 https://www.kaggle.com/datasets/sriramr/fruits-fresh-and-rotten-for-classification
 
 Dataset Description
 
-Categories: Apples, Bananas, Oranges
+Fruit Categories: Apples, Bananas, Oranges
 
 Labels: Fresh / Rotten
 
-Images are used to derive fruit lifecycle (days-to-waste) labels for regression
+Usage in Project:
 
-You must download the dataset manually from Kaggle and organize it locally as required by the training script.
+Fresh fruits are mapped to higher shelf-life values
+
+Rotten fruits are mapped to zero remaining days
+
+This enables regression-based lifecycle prediction
+
+Dataset Structure
+dataset/
+├── train/
+│   ├── freshapples/
+│   ├── freshbanana/
+│   ├── freshoranges/
+│   ├── rottenapples/
+│   ├── rottenbanana/
+│   └── rottenoranges/
+└── test/
+    └── (same structure as train)
 
 🛠️ Installation & Setup
 1️⃣ Clone the repository
@@ -65,7 +84,7 @@ pip install -r requirements.txt
 
 4️⃣ (Optional) Train the model
 
-If you want to retrain the model using the dataset:
+If you want to retrain the model using the included dataset:
 
 python train_fruit_freshness.py
 
@@ -113,6 +132,7 @@ Output: Continuous value (0–5 days)
 ✅ Example
 
 Input: Image of a fresh apple 🍏
+
 Output:
 
 Estimated Shelf Life: 4.8 days
